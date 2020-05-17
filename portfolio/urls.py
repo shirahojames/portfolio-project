@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings #import the settings file
 from django.conf.urls.static import static #import the static media
+import jobs.views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',jobs.views.home, name='home'), #go to jobs apps, views file to home function
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #simply directing where the file program will check for the details upon clicking
