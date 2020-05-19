@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings #import the settings file
 from django.conf.urls.static import static #import the static media
 import jobs.views
@@ -22,5 +22,6 @@ import jobs.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',jobs.views.home, name='home'), #go to jobs apps, views file to home function
+    path('blogs/', include('blog.urls')),#where blog in blog.url is the name of your app and include is forwarding to urls in blog
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #simply directing where the file program will check for the details upon clicking
